@@ -8,4 +8,3 @@
 - [ ] NumPy
 - [ ] Pandas
 - [ ] SciPy
-- [ ] Pandas
