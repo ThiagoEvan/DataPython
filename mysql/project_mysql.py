@@ -1,19 +1,18 @@
 import mysql.connector
 
-# create the connection with mysql
-def Connection():
-    database = input('Database name: ')
+# connection with mysql
+name_database = input('Database name: ')
 
-    database = mysql.connector.connect(
-        host = "localhost",
-        user =  "root",
-        passwd = "",
-        database = database
-    )
+database = mysql.connector.connect(
+    host = "localhost",
+    user =  "root",
+    passwd = "",
+    database = name_database
+)
 
-    cursor = database.cursor()
+cursor = database.cursor()
 
-# method Create
+# function Create
 def CreateTable():
     props_table = []
 
@@ -30,14 +29,30 @@ def CreateTable():
         print('-'*20)
 
         props_column.append(input(f"{column + 1}° Column name: "))
-        props_column.append(input(f"{column + 1}°Column type: "))
-        props_column.append(input(f"{column + 1}°Column space: "))
+        props_column.append(input(f"{column + 1}° Column type: "))
+        props_column.append(input(f"{column + 1}° Column space: "))
 
-        createtable += f'{props_column[0]} {props_column[1]} ({props_column[2]}),'
+        createtable += f'{props_column[0]} {props_column[1]} ({props_column[2]})'
+
+        if column < props_table[1] - 1:
+            createtable += ',' 
 
     createtable += ");"
 
-    print(createtable)
-# cursor.execute(createTable)
+    cursor.execute(createtable)
+
+    print("TABLE CREATE SUCESSED!!")
+
+def Select():
+
+    option = int(input(
+'''-----------------------
+|[ 1 ] - All Table     |
+|[ 2 ] - Only columns  | 
+-----------------------
+Select the option:
+'''))
+    
+    
 
 # database.close()
